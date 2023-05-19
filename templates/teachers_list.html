@@ -140,12 +140,14 @@
       <a class="home-button" onclick="goHome()" type="submit" href="{% url 'teachers_records' %}"> <-- Go Back</a>
     </div>
     <div class="item-details">
+      {% if user.is_authenticated %}
       {% for image in images %}
       <div class="item-image">
 
         <img src="{{image.teacher.url}}" alt="Item Image" height="100px" width="100px" class="img">
       </div>
       {% endfor %}
+
       <div class="item-info">
         <h3>Teacher Name: <span style="color: red;cursor: pointer;">{{detail.teacher_name}}</span></h3>
         <p><strong>Sex:</strong> {{detail.sex}}</p>
@@ -163,6 +165,6 @@
       <a onclick="addRecord()" type="submit" id="a" href="{% url 'teacher_delete' detail.id %}">Mark Returned</a>
     </div>
 
-
+{% endif %}
 </div>
 

@@ -126,6 +126,7 @@
       <a class="home-button" onclick="goHome()" type="submit" href="{% url 'records' %}"> <-- Go Back</a>
     </div>
     <div class="item-details">
+      {% if user.is_authenticated %}
       {% for image in images %}
       <div class="item-image">
 
@@ -149,6 +150,6 @@
       <a onclick="addRecord()" type="submit" id="a" href="{% url 'delete' detail.id %}">Mark Returned</a>
     </div>
 
-
+{% endif %}
 </div>
 
