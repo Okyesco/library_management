@@ -1,2 +1,2 @@
 # library_management
- is a school library management app
+ is a mini school library management app

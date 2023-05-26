@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 from django.utils import timezone
 
 
@@ -20,8 +19,10 @@ class StudentRecord(models.Model):
     sex = models.CharField(max_length=10, null=False)
     book_name = models.TextField(max_length=10000, null=False)
     issuer = models.ForeignKey(Issuer, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100, default='null')
+    edition = models.CharField(max_length=30, default='null')
     return_date = models.DateField()
-    date_borrowed = models.DateTimeField(default=timezone.now(), blank=False)
+    date_borrowed = models.DateTimeField(default=timezone.now, blank=False)
     comment = models.TextField(max_length=10000, blank=True)
 
     def __str__(self):
@@ -35,8 +36,10 @@ class StudentReturn(models.Model):
     sex = models.CharField(max_length=10, null=False)
     book_name = models.CharField(max_length=10000, null=False)
     issuer = models.ForeignKey(Issuer, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100, default='null')
+    edition = models.CharField(max_length=30, default='null')
     date_borrowed = models.DateTimeField(blank=False)
-    return_date = models.DateTimeField(default=timezone.now(), blank=False)
+    return_date = models.DateTimeField(default=timezone.now, blank=False)
     comment = models.TextField(max_length=10000, blank=True)
 
     def __str__(self):
@@ -65,8 +68,10 @@ class TeachersReturn(models.Model):
     sex = models.CharField(max_length=10, null=False)
     book_name = models.TextField(max_length=10000, null=False)
     issuer = models.ForeignKey(Issuer, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100, default='null')
+    edition = models.CharField(max_length=30, default='null')
     date_borrowed = models.DateTimeField(blank=False)
-    return_date = models.DateTimeField(default=timezone.now(), blank=False)
+    return_date = models.DateTimeField(default=timezone.now, blank=False)
     comment = models.TextField(max_length=10000, blank=True)
 
     def __str__(self):
@@ -80,8 +85,10 @@ class TeachersRecord(models.Model):
     phone_number = models.CharField(max_length=10)
     book_name = models.TextField(max_length=10000, null=False)
     issuer = models.ForeignKey(Issuer, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100, default='null')
+    edition = models.CharField(max_length=30, default='null')
     return_date = models.DateField()
-    date_borrowed = models.DateTimeField(default=timezone.now(), blank=False)
+    date_borrowed = models.DateTimeField(default=timezone.now, blank=False)
     comment = models.TextField(max_length=10000, blank=True)
 
     def __str__(self):

@@ -242,11 +242,19 @@ https://templatemo.com/tm-585-barber-shop
                                             </div>
 
                                             <div class="col-lg-6 col-12">
-                                                <input type="text" class="form-control" name="book_name" placeholder="Name of book"  required="">
+                                                <input type="text" class="form-control" name="book_name" placeholder="Name of book"  required>
                                             </div>
 
                                             <div class="col-lg-6 col-12">
-                                                <select class="form-select form-control" name="issuer" id="bb-branch" aria-label="Default select example" required>
+                                                <input type="text" class="form-control" name="author" placeholder="Author of Book"  required>
+                                            </div>
+
+                                            <div class="col-lg-6 col-12">
+                                                <input type="text" class="form-control" name="edition" placeholder="Book Edition"  >
+                                            </div>
+
+                                            <div class="col-lg-6 col-12">
+                                                <select class="form-select form-control" name="issuer" id="bc-branch" aria-label="Default select example" required>
                                                     <option selected="">---Issuer---</option>
                                                     {% for issuer in issuers %}
                                                     <option value="{{issuer.id}}">{{issuer}}</option>
