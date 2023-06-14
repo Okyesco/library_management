@@ -55,16 +55,17 @@
       margin-bottom: 20px;
     }
 
-    .item-image {
-      width: 300px;
+     .item-image {
+
       margin-right: 20px;
-      border-radius: 5px;
-      overflow: hidden;
+
+
     }
 
     .item-image img {
-      width: 100%;
-      height: auto;
+      width: 320px;
+      height: 420px;
+      border-radius: 5px;
     }
 
     .item-info {
@@ -140,17 +141,21 @@
       <a class="home-button" onclick="goHome()" type="submit" href="{% url 'teachers_records' %}"> <-- Go Back</a>
     </div>
     <div class="item-details">
+      {% if user.is_superuser %}
       {% for image in images %}
       <div class="item-image">
 
-        <img src="{{image.teacher.url}}" alt="Item Image" height="100px" width="100px" class="img">
+        <img src="{{image.teacher.url}}" alt="Item Image" width="320px" height="420px" class="img">
       </div>
       {% endfor %}
+
       <div class="item-info">
         <h3>Teacher Name: <span style="color: red;cursor: pointer;">{{detail.teacher_name}}</span></h3>
         <p><strong>Sex:</strong> {{detail.sex}}</p>
         <p><strong>Mobile Number:</strong> {{detail.phone_number}}</p>
         <p><strong>Name of Book(s):</strong> {{detail.book_name}}</p>
+        <p><strong>Author of Book(s):</strong> {{detail.author}}</p>
+        <p><strong>Edition of Book(s):</strong> {{detail.edition}}</p>
         <p><strong>Issuer:</strong> {{detail.issuer}}</p>
         <p><strong>Date Borrowed:</strong> {{detail.date_borrowed}}</p>
         <p><strong>Return Date:</strong> {{detail.return_date}}</p>
@@ -163,6 +168,6 @@
       <a onclick="addRecord()" type="submit" id="a" href="{% url 'teacher_delete' detail.id %}">Mark Returned</a>
     </div>
 
-
+{% endif %}
 </div>
 

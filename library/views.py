@@ -14,9 +14,12 @@ def home(request):
         issuer = request.POST['issuer']
         return_date = request.POST['return_date']
         comment = request.POST['comment']
+        author = request.POST['author']
+        edition = request.POST['edition']
 
         StudentRecord.objects.create(student_name=student_name, stage=stage, sex=sex, book_name=book_name,
-                                     issuer_id=issuer, return_date=return_date, comment=comment)
+                                     issuer_id=issuer, return_date=return_date, comment=comment, edition=edition,
+                                     author=author)
 
         return HttpResponse(
             f"<h3> <span style='color:red;'>{student_name}'s</span> Records Added Successfully</h3><a href='/'>Home</a>")
@@ -47,7 +50,7 @@ def delete(request, pk):
 
     deleted = StudentReturn(id=detail.id, student_name=detail.student_name, book_name=detail.book_name,
                             date_borrowed=detail.date_borrowed, comment=detail.comment, issuer=detail.issuer,
-                            sex=detail.sex, stage=detail.stage)
+                            sex=detail.sex, stage=detail.stage, edition=detail.edition,author=detail.author)
 
     deleted.save()
 
@@ -64,9 +67,12 @@ def teachers(request):
         issuer = request.POST['issuer']
         return_date = request.POST['return_date']
         comment = request.POST['comment']
+        author = request.POST['author']
+        edition = request.POST['edition']
 
         TeachersRecord.objects.create(teacher_name=teacher_name, phone_number=phone_number, sex=sex, book_name=book_name,
-                                      issuer_id=issuer, return_date=return_date, comment=comment)
+                                      issuer_id=issuer, return_date=return_date, comment=comment, edition=edition,
+                                      author=author)
 
         return HttpResponse(
             f"<h3> <span style='color:red;'>{teacher_name}'s</span> Records Added Successfully</h3><a href=''>Home</a>")
@@ -93,7 +99,8 @@ def teacher_delete(request, ax):
 
     deleted = TeachersReturn(id=detail.id, teacher_name=detail.teacher_name, book_name=detail.book_name,
                              date_borrowed=detail.date_borrowed, comment=detail.comment, issuer=detail.issuer,
-                             sex=detail.sex, phone_number=detail.phone_number)
+                             sex=detail.sex, phone_number=detail.phone_number, edition=detail.edition,
+                             author=detail.author)
 
     deleted.save()
 

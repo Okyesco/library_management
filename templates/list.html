@@ -56,15 +56,16 @@
     }
 
     .item-image {
-      width: 300px;
+
       margin-right: 20px;
-      border-radius: 5px;
-      overflow: hidden;
+
+
     }
 
     .item-image img {
-      width: 100%;
-      height: auto;
+      width: 320px;
+      height: 420px;
+      border-radius: 5px;
     }
 
     .item-info {
@@ -126,6 +127,7 @@
       <a class="home-button" onclick="goHome()" type="submit" href="{% url 'records' %}"> <-- Go Back</a>
     </div>
     <div class="item-details">
+      {% if user.is_authenticated %}
       {% for image in images %}
       <div class="item-image">
 
@@ -137,6 +139,8 @@
         <p><strong>Class:</strong> {{detail.stage}}</p>
         <p><strong>Sex:</strong> {{detail.sex}}</p>
         <p><strong>Name of Book(s):</strong> {{detail.book_name}}</p>
+        <p><strong>Author of Book(s):</strong> {{detail.author}}</p>
+        <p><strong>Edition of Book(s):</strong> {{detail.edition}}</p>
         <p><strong>Issuer:</strong> {{detail.issuer}}</p>
         <p><strong>Date Borrowed:</strong> {{detail.date_borrowed}}</p>
         <p><strong>Return Date:</strong> {{detail.return_date}}</p>
@@ -149,6 +153,6 @@
       <a onclick="addRecord()" type="submit" id="a" href="{% url 'delete' detail.id %}">Mark Returned</a>
     </div>
 
-
+{% endif %}
 </div>
 
