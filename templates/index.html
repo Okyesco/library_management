@@ -82,11 +82,16 @@ https://templatemo.com/tm-585-barber-shop
                                 <a class="nav-link click-scroll" href="{% url 'records' %}">Records</a>
                             </li>
 
+                            {% endif %}
+
+                            {% if user.is_superuser %}
                             <li class="nav-item">
                                 <a class="nav-link click-scroll" href="{% url 'teachers' %}">Teachers Portal</a>
                             </li>
 
+                            {% endif %}
 
+                            {% if user.is_authenticated %}
 
                             <li class="nav-item">
                                 <a class="nav-link click-scroll" href="{% url 'logout' %}">Log Out</a>

@@ -60,7 +60,7 @@ https://templatemo.com/tm-585-barber-shop
                                 <a class="nav-link click-scroll" href="{% url 'home' %}" id="home">Home</a>
                             </li>
 
-                            {% if user.is_authenticated %}
+                            {% if user.is_superuser %}
                             <li class="nav-item">
                                 <a class="nav-link click-scroll" href="#form">Add Record</a>
                             </li>
@@ -104,7 +104,7 @@ https://templatemo.com/tm-585-barber-shop
 
 
 
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
         <div class="col-lg-10 col-12 mx-auto" id="form">
                                 <form action="{% url 'teachers' %}" method="post" class="custom-form booking-form" id="bb-booking-form" role="form">
                                     {% csrf_token %}

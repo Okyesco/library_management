@@ -55,16 +55,17 @@
       margin-bottom: 20px;
     }
 
-    .item-image {
-      width: 300px;
+     .item-image {
+
       margin-right: 20px;
-      border-radius: 5px;
-      overflow: hidden;
+
+
     }
 
     .item-image img {
-      width: 100%;
-      height: auto;
+      width: 320px;
+      height: 420px;
+      border-radius: 5px;
     }
 
     .item-info {
@@ -140,11 +141,11 @@
       <a class="home-button" onclick="goHome()" type="submit" href="{% url 'teachers_records' %}"> <-- Go Back</a>
     </div>
     <div class="item-details">
-      {% if user.is_authenticated %}
+      {% if user.is_superuser %}
       {% for image in images %}
       <div class="item-image">
 
-        <img src="{{image.teacher.url}}" alt="Item Image" height="100px" width="100px" class="img">
+        <img src="{{image.teacher.url}}" alt="Item Image" width="320px" height="420px" class="img">
       </div>
       {% endfor %}
 
